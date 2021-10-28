@@ -18,12 +18,11 @@ if [ "$EUID" -ne 0 ]; then
 	exit
 fi
 
-alias not_found="! command -v $1> &> /dev/null"
 install_deps() {
-	if not_found picom then
+	if [ -f "/usr/lib/picom" ]; then
 		emerge -av x11-misc/picom
 	fi
-	if not_found feh then
+	if [ -f "/usr/lib/feh" ]; then
 		emerge -av media-gfx/feh
 	fi
 }
